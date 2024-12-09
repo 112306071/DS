@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>搜尋結果</title>
+</head>
+<body>
+    <h1>搜尋結果 for: <span th:text="${keyword}"></span></h1>
+    <ul>
+        <li th:each="entry : ${results}">
+            <a th:href="${entry.value}" th:text="${entry.key}"></a>
+        </li>
+    </ul>
+</body>
+</html>
