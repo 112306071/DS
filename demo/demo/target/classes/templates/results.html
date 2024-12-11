@@ -2,13 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>搜尋結果</title>
+    <style>
+        .game-symbol img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>搜尋結果 for: <span th:text="${keyword}"></span></h1>
+    <!-- 左上角顯示對應遊戲圖標 -->
+    <div class="game-symbol">
+        <img th:if="${category == 'brawl_stars'}" src="https://upload.wikimedia.org/wikipedia/zh/0/01/Brawl_Stars_Transparent_Background.png" alt="荒野亂鬥">
+        <img th:if="${category == 'arena_of_valor'}" src="https://play-lh.googleusercontent.com/9HgbyVHLtzWzYX1cL9yjxXgkTtBpcaWsztJgdVU0QHnoNLxEwHIYnMlWdjLdN2y6oD8" alt="傳說對決">
+        <img th:if="${category == 'league_of_legends'}" src="https://pic.616pic.com/ys_img/00/05/32/XCKiRnmI7k.jpg" alt="英雄聯盟">
+        <img th:if="${category == 'valorant'}" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQTtEBOj2sDk4xDIvzPQnoSdR1B7x5VokVmw&s" alt="特戰英豪">
+    </div>
+
+    <!-- 顯示搜尋關鍵字 -->
+    <h1>搜尋結果 for: 
+        <span th:text="${keyword}"></span>
+    </h1>
+
+    <!-- 顯示搜尋結果列表 -->
     <ul>
         <li th:each="entry : ${results}">
             <a th:href="${entry.value}" th:text="${entry.key}"></a>
         </li>
     </ul>
+
+    <a href="/">回到首頁</a>
 </body>
 </html>
