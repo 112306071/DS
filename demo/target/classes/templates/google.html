@@ -53,27 +53,36 @@
         #result {
             margin-top: 20px;
         }
+        .corner-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 150px; /* 圖片寬度 */
+            height: auto;
+        }
     </style>
     <script> 
         document.addEventListener('DOMContentLoaded', () => { 
             const categorySelect = document.getElementById('category'); 
+            const cornerImage = document.getElementById('corner-image');
+            
             categorySelect.addEventListener('change', () => { 
                 const selectedValue = categorySelect.value; 
-                const body = document.body; 
                 switch (selectedValue) { 
                     case 'brawl_stars': 
-                        body.style.backgroundImage = "url('/brawlstar.png')"; 
+                        cornerImage.src = '/brawlstar.png'; 
                         break; 
                     case 'arena_of_valor': 
-                        body.style.backgroundImage = "url('/arenaofvalor.jpg')"; 
+                        cornerImage.src = '/arenaofvalor.jpg'; 
                         break; 
                     case 'league_of_legends': 
-                        body.style.backgroundImage = "url('/lol.jpg')"; 
+                        cornerImage.src = '/lol.jpg'; 
                         break;
                     case 'valorant': 
-                        body.style.backgroundImage = "url('/valorant.jpg')"; 
+                        cornerImage.src = '/valorant.jpg'; 
                         break;
                     default: 
+                        cornerImage.src = ''; // 清空圖片
                         break; 
                 } 
             }); 
@@ -97,5 +106,8 @@
     </form>
     <div id="result"></div>
 </div>
+
+<!-- 右上角圖片 -->
+<img id="corner-image" class="corner-image" alt="右上角圖片">
 </body>
 </html>
